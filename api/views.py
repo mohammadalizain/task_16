@@ -11,6 +11,9 @@ from .serializers import (
     RestaurantCreateUpdateSerializer,
 )
 
+class ArticleCreateView(CreateAPIView):
+    serializer_class = ArticleCreateSerializer
+
 class RestaurantListView(ListAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantListSerializer
@@ -39,3 +42,9 @@ class RestaurantDeleteView(DestroyAPIView):
     serializer_class = RestaurantListSerializer
     lookup_field = 'id'
     lookup_url_kwarg = 'restaurant_id'
+
+class UpdateView(RetrieveUpdateAPIView):
+    queryset = ModelName.objects.all()
+    serializer_class = CreateSerializer
+    lookup_field = 'id'
+    lookup_url_kwarg = 'object_id'
